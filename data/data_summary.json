@@ -1,0 +1,60 @@
+{
+  "raw_rows": 113,
+  "clean_unique_destinations": 112,
+  "duplicates_removed": [
+    "Waduk Sermo"
+  ],
+  "image_files_detected_in_rar": 81,
+  "image_matched": 81,
+  "image_missing": 31,
+  "average_rating": 4.45,
+  "kabupaten_count": {
+    "Gunung Kidul": 38,
+    "Bantul": 36,
+    "Kulon Progo": 30,
+    "Sleman": 8
+  },
+  "kategori_count": {
+    "Pantai": 41,
+    "Bukit": 24,
+    "Lainnya": 17,
+    "Air Terjun": 15,
+    "Goa": 11,
+    "Hutan": 4
+  },
+  "kategori_asli_count": {
+    "Pantai": 41,
+    "Bukit": 21,
+    "Air Terjun": 14,
+    "Goa": 11,
+    "Lainnya": 7,
+    "Sungai": 6,
+    "Hutan": 4,
+    "Gunung": 3,
+    "Air terjun": 1,
+    "Perkebunan": 1,
+    "Waduk": 1,
+    "Geologi": 1,
+    "Air": 1
+  },
+  "top_3_by_rating": [
+    {
+      "nama_wisata": "Hilir Sungai Opak",
+      "rating": 5.0,
+      "kabupaten": "Bantul",
+      "kategori": "Lainnya"
+    },
+    {
+      "nama_wisata": "Wisata Mangrove Pasir Mendit Jangkaran",
+      "rating": 5.0,
+      "kabupaten": "Kulon Progo",
+      "kategori": "Hutan"
+    },
+    {
+      "nama_wisata": "Kano Maritim Baros",
+      "rating": 4.8,
+      "kabupaten": "Bantul",
+      "kategori": "Pantai"
+    }
+  ]
+}

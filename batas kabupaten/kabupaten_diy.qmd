@@ -1,0 +1,56 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.40.7-Bratislava">
+  <identifier>DIY_34_ADMINISTRASIKABKOT_AR</identifier>
+  <parentidentifier></parentidentifier>
+  <language>ENG</language>
+  <type>dataset</type>
+  <title>34_ADMINISTRASIKABKOT_AR</title>
+  <abstract>Batas Wilayah Administrasi
+
+Batas Wilayah Administrasi</abstract>
+  <keywords vocabulary="Search keys">
+    <keyword>Batas Wilayah Administrasi</keyword>
+    <keyword>Daerah Istimewa Yogyakarta</keyword>
+    <keyword>csw</keyword>
+  </keywords>
+  <contact>
+    <name>KEPALA BAPPEDA DIY</name>
+    <organization>BAPPEDA DIY</organization>
+    <position></position>
+    <voice></voice>
+    <fax></fax>
+    <email></email>
+    <role></role>
+  </contact>
+  <links/>
+  <history>Batas Wilayah Administrasi</history>
+  <dates>
+    <date value="2024-09-02T00:00:00" type="Created"/>
+    <date value="2024-09-09T00:00:00" type="Published"/>
+  </dates>
+  <fees></fees>
+  <rights>Biro Tata Pemerintahan Setda DIY; Dinas Pertanahan dan Tata Ruang DIY; Balai Penelitian, Pengembangan, dan Statistik Daerah DIY; Badan Perencanaan Pembangunan Daerah DIY</rights>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>PROJCRS["SRGI2013 / UTM zone 49S",BASEGEOGCRS["SRGI2013",DYNAMIC[FRAMEEPOCH[2012]],DATUM["Sistem Referensi Geospasial Indonesia 2013",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",9470]],CONVERSION["UTM zone 49S",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",111,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",10000000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Engineering survey, topographic mapping (large and medium scale)."],AREA["Indonesia - south of equator and between 108°E and 114°E - onshore and offshore."],BBOX[-12.07,108,0,114]],ID["EPSG",9489]]</wkt>
+      <proj4>+proj=utm +zone=49 +south +ellps=WGS84 +units=m +no_defs</proj4>
+      <srsid>63454</srsid>
+      <srid>520003454</srid>
+      <authid>EPSG:9489</authid>
+      <description>SRGI2013 / UTM zone 49S</description>
+      <projectionacronym>utm</projectionacronym>
+      <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial miny="-8.20429999999999993" minz="0" crs="EPSG:9489" minx="110.00249999999999773" dimensions="2" maxx="110.83920000000000528" maxz="0" maxy="-7.54110000000000014"/>
+    <temporal>
+      <period>
+        <start>2024-09-08T17:00:00Z</start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>

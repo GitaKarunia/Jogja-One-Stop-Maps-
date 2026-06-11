@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jogja One Stop Maps adalah WebGIS wisata alam Yogyakarta untuk menelusuri destinasi, kategori, rating, HTM, dan rute berbasis peta interaktif." />
+  <meta name="theme-color" content="#063b32" />
+  <title>Jogja One Stop Maps — Peta Wisata Alam Yogyakarta</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header" id="beranda">
+    <nav class="navbar container" aria-label="Navigasi utama">
+      <a class="brand brand--hero" href="index.html" aria-label="Jogja One Stop Maps">
+        <img src="LOGO_HEADER_LIGHT.png" alt="Jogja One Stop Maps" class="brand-logo">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+           <a class="nav-link active" href="#beranda" aria-current="page">Beranda</a>
+        <a class="nav-link" href="#tentang">Tentang</a>
+        <a class="nav-link" href="#kategori">Kategori</a>
+        <a class="nav-link" href="#destinasi">Destinasi</a>
+        <a class="nav-link" href="#peta">Peta Interaktif</a>
+        <a class="nav-link" href="#cara-kerja">Cara Kerja</a>
+      </div>
+
+      <a class="btn btn-dark nav-cta" href="map.html">
+        Buka Peta <i data-lucide="map-pin"></i>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-route" aria-hidden="true">
+        <svg viewBox="0 0 720 420" preserveAspectRatio="none">
+          <path d="M80 330 C 190 250, 240 310, 335 205 C 432 98, 494 184, 630 68" />
+        </svg>
+        <span class="hero-pin pin-teal"></span>
+        <span class="hero-pin pin-gold"></span>
+        <span class="hero-pin pin-green"></span>
+        <span class="hero-pin pin-coral"></span>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <span class="eyebrow"><i data-lucide="map-pin"></i> Peta Wisata Alam Yogyakarta</span>
+          <h1>Jelajahi wisata alam Yogyakarta dalam satu peta interaktif</h1>
+          <p>Temukan, rencanakan, dan nikmati keindahan alam Yogyakarta dengan informasi terpercaya yang terus diperbarui dalam satu peta interaktif.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="map.html">Buka Peta Interaktif <i data-lucide="arrow-right"></i></a>
+            <a class="btn btn-light" href="#destinasi">Jelajahi Destinasi <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container stats-shell" aria-label="Ringkasan data wisata">
+      <div class="stats-card reveal" id="statsCard">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <section class="section problem-section" id="tentang">
+      <div class="container">
+        <div class="section-center reveal">
+          <h2>Mengapa Jogja One Stop Maps?</h2>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-col">
+            <h3>Tantangan saat menjelajah</h3>
+            <ul>
+              <li><i data-lucide="x"></i> Informasi wisata tersebar di banyak sumber</li>
+              <li><i data-lucide="x"></i> Sulit membandingkan lokasi dan rute terbaik</li>
+              <li><i data-lucide="x"></i> Data destinasi sering tidak lengkap</li>
+              <li><i data-lucide="x"></i> Perencanaan perjalanan kurang efisien</li>
+            </ul>
+          </div>
+          <div class="problem-arrow"><i data-lucide="arrow-right"></i></div>
+          <div class="problem-col solution">
+            <h3>Solusi kami</h3>
+            <ul>
+              <li><i data-lucide="check"></i> Satu peta wisata lengkap dan terkurasi</li>
+              <li><i data-lucide="check"></i> Peta interaktif dengan filter dan navigasi</li>
+              <li><i data-lucide="check"></i> Data destinasi akurat dan mudah dibaca</li>
+              <li><i data-lucide="check"></i> Perjalanan lebih mudah direncanakan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section category-section" id="kategori">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <span class="section-kicker">Kategori wisata</span>
+            <h2>Jelajahi berdasarkan kategori</h2>
+            <p>Pilih kategori wisata sesuai minat perjalanan Anda.</p>
+          </div>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section destination-section" id="destinasi">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <span class="section-kicker">DESTINASI PILIHAN</span>
+            <h2>Destinasi pilihan untuk mulai menjelajah Yogyakarta</h2>
+            <p>Kurasi tiga destinasi alam dengan karakter berbeda untuk memulai eksplorasi wisata Yogyakarta.</p>
+          </div>
+          <a class="link-pill" href="destinasi.html">Lihat Semua Destinasi <i data-lucide="arrow-right"></i></a>
+        </div>
+        <div class="destination-grid" id="topDestinationGrid"></div>
+      </div>
+    </section>
+
+    <section class="section map-feature-section" id="peta">
+      <div class="container map-feature-layout">
+        <div class="map-feature-copy reveal">
+          <span class="section-kicker">Peta interaktif</span>
+          <h2>Eksplorasi destinasi lewat peta yang lebih terarah</h2>
+          <p>Peta penuh disiapkan sebagai ruang eksplorasi utama. Di sana pengguna bisa membaca persebaran destinasi, memakai filter, membuka detail lokasi, dan langsung melanjutkan rute.</p>
+        </div>
+
+        <div class="map-feature-grid reveal" aria-label="Fitur utama peta interaktif">
+          <article class="map-feature-card">
+            <span class="map-feature-icon"><i data-lucide="sliders-horizontal"></i></span>
+            <div>
+              <h3>Filter kategori & wilayah</h3>
+              <p>Temukan destinasi berdasarkan Pantai, Bukit, Goa, Air Terjun, Hutan, Lainnya, dan kabupaten.</p>
+            </div>
+          </article>
+          <article class="map-feature-card">
+            <span class="map-feature-icon"><i data-lucide="map-pin"></i></span>
+            <div>
+              <h3>Marker warna kategori</h3>
+              <p>Setiap kategori memakai warna berbeda agar pola sebaran wisata lebih mudah dibaca.</p>
+            </div>
+          </article>
+          <article class="map-feature-card">
+            <span class="map-feature-icon"><i data-lucide="panel-top-open"></i></span>
+            <div>
+              <h3>Popup detail destinasi</h3>
+              <p>Lihat rating, HTM, kategori, kabupaten, deskripsi, foto, dan akses rute dari satu popup.</p>
+            </div>
+          </article>
+          <article class="map-feature-card">
+            <span class="map-feature-icon"><i data-lucide="navigation"></i></span>
+            <div>
+              <h3>Rute Google Maps</h3>
+              <p>Setiap titik destinasi bisa langsung dibuka ke Google Maps untuk kebutuhan navigasi.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section value-section usage-section" id="cara-kerja">
+      <div class="container">
+        <div class="section-center reveal">
+          <span class="section-kicker">Cara kerja</span>
+          <h2>Cara mudah menemukan destinasi wisata</h2>
+          <p>Mulai dari memilih kategori, membandingkan destinasi, melihat sebaran lokasi, lalu lanjutkan perjalanan melalui peta interaktif.</p>
+        </div>
+        <div class="value-grid usage-grid reveal">
+          <article>
+            <span class="step-badge">01</span>
+            <i data-lucide="layout-grid"></i>
+            <strong>Pilih kategori wisata</strong>
+            <span>Telusuri pantai, bukit, goa, air terjun, hutan, dan destinasi lainnya sesuai rencana perjalanan.</span>
+          </article>
+          <article>
+            <span class="step-badge">02</span>
+            <i data-lucide="scale"></i>
+            <strong>Bandingkan destinasi</strong>
+            <span>Lihat rating, HTM, kabupaten, deskripsi singkat, dan foto untuk menentukan pilihan terbaik.</span>
+          </article>
+          <article>
+            <span class="step-badge">03</span>
+            <i data-lucide="map-pinned"></i>
+            <strong>Lihat sebaran lokasi</strong>
+            <span>Gunakan peta untuk memahami posisi destinasi, kedekatan antar tempat wisata, dan arah perjalanan sebelum berangkat.</span>
+          </article>
+          <article>
+            <span class="step-badge">04</span>
+            <i data-lucide="navigation"></i>
+            <strong>Lanjutkan ke rute</strong>
+            <span>Buka lokasi destinasi melalui Google Maps untuk membantu navigasi perjalanan secara langsung.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container final-cta reveal">
+      <div class="cta-icon"><i data-lucide="map-pin"></i></div>
+      <div>
+        <h2>Siap menemukan destinasi terbaik?</h2>
+        <p>Telusuri data destinasi, baca detail wisata, lalu lanjutkan ke peta interaktif.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="map.html">Buka Peta Interaktif <i data-lucide="arrow-right"></i></a>
+        <a class="btn btn-outline" href="destinasi.html">Jelajahi Destinasi</a>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="detail-modal" id="detailModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="detail-modal-backdrop" data-close-modal></div>
+    <article class="detail-modal-card" role="document">
+      <button class="modal-close" type="button" data-close-modal aria-label="Tutup detail destinasi">
+        <i data-lucide="x"></i>
+      </button>
+      <div class="modal-image-wrap">
+        <img id="modalImage" src="" alt="" />
+      </div>
+      <div class="modal-content">
+        <div class="modal-topline">
+          <span id="modalCategory">Kategori</span>
+          <span class="modal-rating"><i data-lucide="star"></i> <b id="modalRating">-</b></span>
+        </div>
+        <h2 id="modalTitle">Nama destinasi</h2>
+        <div class="modal-meta">
+          <span><i data-lucide="map-pin"></i> <b id="modalKabupaten">Kabupaten</b></span>
+          <span><i data-lucide="ticket"></i> <b id="modalHtm">HTM</b></span>
+        </div>
+        <p id="modalDescription"></p>
+        <div class="modal-actions">
+          <a class="btn btn-dark" id="modalRoute" href="#" target="_blank" rel="noopener">Rute Google Maps <i data-lucide="navigation"></i></a>
+          <a class="btn btn-light modal-map-link" id="modalMap" href="map.html">Lihat di Peta <i data-lucide="map"></i></a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-brand" href="#beranda">
+          <strong>Jogja One Stop Maps</strong>
+          <small>WebGIS wisata alam Yogyakarta</small>
+        </a>
+        <p>Platform WebGIS wisata alam Yogyakarta dengan informasi akurat, terbarui, dan mudah diakses.</p>
+      </div>
+      <div class="footer-institution">
+        <h3>Identitas</h3>
+        <span>Program Studi Teknik Geomatika</span>
+        <span>Jurusan Teknik Geologi</span>
+        <span>Fakultas Teknologi Mineral dan Energi</span>
+        <span>UPN "Veteran" Yogyakarta</span>
+      </div>
+      <div><h3>Kontak</h3><span><i data-lucide="mail"></i> jogjaonestopmaps@gmail.com</span><span><i data-lucide="map-pin"></i> Yogyakarta, Indonesia</span></div>
+    </div>
+    <div class="container footer-bottom">&copy; 2026 Jogja One Stop Maps. Semua hak dilindungi.</div>
+  </footer>
+
+  <script src="data/destinations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

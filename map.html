@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Peta interaktif Jogja One Stop Maps untuk eksplorasi destinasi wisata alam Yogyakarta berdasarkan kategori, kabupaten, rating, HTM, dan rute Google Maps." />
+  <title>Peta Interaktif — Jogja One Stop Maps</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="libs/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="map.css" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="libs/leaflet/leaflet.js"></script>
+</head>
+<body class="map-page">
+  <header class="map-header">
+    <nav class="map-navbar" aria-label="Navigasi halaman peta">
+      <a class="brand" href="index.html" aria-label="Jogja One Stop Maps">
+        <img src="LOGO_HEADER.png" alt="Jogja One Stop Maps" class="brand-logo">
+      </a>
+
+      <div class="map-nav-links" id="mapNavLinks">
+        <a href="index.html">Beranda</a>
+        <a href="destinasi.html">Destinasi</a>
+        <a href="map.html" class="active">Peta Interaktif</a>
+      </div>
+
+      <button class="reset-view-btn" id="resetViewBtn" type="button">
+        <i data-lucide="rotate-ccw"></i>
+        Reset Tampilan
+      </button>
+
+      <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button" aria-label="Buka panel destinasi" aria-expanded="false">
+        <i data-lucide="sliders-horizontal"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main class="map-shell">
+    <aside class="map-sidebar" id="mapSidebar" aria-label="Panel pencarian dan filter destinasi">
+      <button class="sheet-handle" id="sheetHandle" type="button" aria-label="Geser panel destinasi" aria-expanded="false">
+<span class="sheet-handle-bar"></span>
+      </button>
+      <div class="sidebar-head">
+        <div class="sidebar-title-row">
+          <span class="sidebar-icon"><i data-lucide="map"></i></span>
+          <div>
+            <h1>Peta Wisata Yogyakarta</h1>
+            <p>Temukan destinasi wisata alam terbaik di Yogyakarta.</p>
+          </div>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Tutup panel"><i data-lucide="x"></i></button>
+      </div>
+
+      <div class="search-row">
+        <label class="search-box" for="mapSearch">
+          <i data-lucide="search"></i>
+          <input id="mapSearch" type="search" placeholder="Cari destinasi, contoh: Pantai Drini..." autocomplete="off" />
+        </label>
+        <button class="icon-btn" id="clearSearch" type="button" aria-label="Bersihkan pencarian"><i data-lucide="x"></i></button>
+      </div>
+
+      <section class="filter-group" aria-label="Filter kategori">
+        <h2>Kategori</h2>
+        <div class="category-chips" id="categoryChips"></div>
+      </section>
+
+      <section class="filter-group filter-grid" aria-label="Filter lanjutan">
+        <div>
+          <h2>Kabupaten</h2>
+          <label class="select-box">
+            <select id="regencySelect"><option value="all">Semua kabupaten</option></select>
+            <i data-lucide="chevron-down"></i>
+          </label>
+        </div>
+        <div>
+          <h2>Urutkan</h2>
+          <label class="select-box">
+            <select id="sortSelect">
+              <option value="rating_desc">Rating tertinggi</option>
+              <option value="rating_asc">Rating terendah</option>
+              <option value="htm_asc">HTM terendah</option>
+              <option value="htm_desc">HTM tertinggi</option>
+              <option value="name_asc">Nama A–Z</option>
+            </select>
+            <i data-lucide="chevron-down"></i>
+          </label>
+        </div>
+      </section>
+
+      <div class="result-summary" id="resultSummary">
+        <i data-lucide="bar-chart-3"></i>
+        <span>Menampilkan destinasi.</span>
+      </div>
+
+      <div id="mobileDetailCard" class="mobile-detail-card" hidden></div>
+
+      <div class="list-head">
+        <h2>Daftar Destinasi</h2>
+        <a href="destinasi.html">Lihat semua <i data-lucide="arrow-right"></i></a>
+      </div>
+
+      <div class="destination-list" id="destinationList" role="list"></div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <i data-lucide="search-x"></i>
+        <h3>Destinasi tidak ditemukan</h3>
+        <p>Coba ubah pencarian, kategori, kabupaten, atau urutan data.</p>
+        <button type="button" class="mini-reset" id="emptyReset">Reset Filter</button>
+      </div>
+    </aside>
+
+    <section class="map-canvas-wrap" aria-label="Peta interaktif destinasi wisata Yogyakarta">
+
+      <label class="floating-search mobile-floating-search" for="floatingSearch">
+        <i data-lucide="search"></i>
+        <input id="floatingSearch" type="search" placeholder="Cari destinasi wisata..." autocomplete="off" />
+      </label>
+
+      <button class="sidebar-toggle-btn" id="sidebarToggleBtn" type="button" aria-label="Sembunyikan panel destinasi" aria-expanded="true">
+        <i data-lucide="panel-left-close"></i>
+        <span>Sembunyikan Panel</span>
+      </button>
+
+      <div id="map" class="map-canvas"></div>
+
+      <div class="map-controls-card layer-card">
+        <button class="map-control-row" id="toggleLayerPanel" type="button" aria-expanded="false">
+          <span><i data-lucide="layers"></i> Peta Dasar</span>
+          <i data-lucide="chevron-down"></i>
+        </button>
+        <div class="layer-options" id="layerOptions" hidden>
+          <label><input type="radio" name="baseLayer" value="osm" checked /> Peta Jalan (OSM)</label>
+          <label><input type="radio" name="baseLayer" value="satellite" /> Google Satelit</label>
+          <hr style="border:0;border-top:1px solid rgba(6,59,50,.1);margin:4px 0" />
+          <label><input type="checkbox" value="kabupaten" checked /> Batas Kabupaten</label>
+        </div>
+      </div>
+
+      <button class="map-controls-card fit-btn" id="fitMarkersBtn" type="button">
+        <i data-lucide="crosshair"></i>
+        Sesuaikan Zoom
+      </button>
+
+      <div class="legend-card" id="legendCard">
+        <div class="legend-group">
+          <h3>Legenda Kategori</h3>
+          <div id="legendList"></div>
+        </div>
+        <div class="legend-group" style="margin-top: 14px;">
+          <h3>Legenda Kabupaten</h3>
+          <div id="kabupatenLegendList">
+            <div class="legend-item kab-item">
+              <span class="legend-bullet" style="background:#2f86d8"></span>
+              <span>Sleman</span>
+            </div>
+            <div class="legend-item kab-item">
+              <span class="legend-bullet" style="background:#18a9b0"></span>
+              <span>Bantul</span>
+            </div>
+            <div class="legend-item kab-item">
+              <span class="legend-bullet" style="background:#eb7a33"></span>
+              <span>Kulon Progo</span>
+            </div>
+            <div class="legend-item kab-item">
+              <span class="legend-bullet" style="background:#9651d0"></span>
+              <span>Gunungkidul</span>
+            </div>
+            <div class="legend-item kab-item">
+              <span class="legend-bullet" style="background:#df5f49"></span>
+              <span>Kota Yogyakarta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data/destinations.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>

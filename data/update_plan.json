@@ -1,0 +1,22 @@
+[
+  {
+    "nama": "Pantai Cangkring",
+    "id": "pantai-cangkring",
+    "aksi": "UPDATE_IMAGE",
+    "field_lama": "assets/img/pantai-cangkring.jpeg",
+    "field_baru": "assets/img/pantai-cangkring.png",
+    "image_status_baru": "matched",
+    "confidence": "HIGH",
+    "alasan": "File pantai-cangkring.png ada, destinasi ada di JS dan CSV"
+  },
+  {
+    "nama": "Laguna Barat Pantai Glagah",
+    "id": "laguna-barat-pantai-glagah",
+    "aksi": "DELETE",
+    "field_lama": "assets/img/Pantai-Glagah.jpeg.jpeg",
+    "field_baru": "N/A (entry removed)",
+    "image_status_baru": "deleted",
+    "confidence": "HIGH",
+    "alasan": "Tidak ada di CSV tapi ada di JS, user konfirmasi sudah dihapus"
+  }
+]
